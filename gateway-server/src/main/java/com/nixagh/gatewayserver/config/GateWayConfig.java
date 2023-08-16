@@ -14,7 +14,12 @@ public class GateWayConfig {
         return builder.routes()
                 .route("auth-service", r -> r
                         .path("/auth/**")
-                        .uri("http://localhost:3101")
-                ).build();
+                        .uri("http://localhost:3302")
+                )
+                .route("config-server", r -> r
+                        .path("/config/**")
+                        .uri("http://localhost:8888")
+                )
+                .build();
     }
 }

@@ -1,5 +1,6 @@
 package com.nixagh.authservice.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,8 @@ public class ping {
     private String dbName;
 
     @GetMapping("/ping")
-    public String getPing() {
-        return dbName;
+    public String getPing(HttpServletRequest request) {
+        String x = request.getHeader("Authorization1");
+        return "pong " + x + " " + dbName;
     }
 }
